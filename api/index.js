@@ -12,6 +12,15 @@ db.connect(process.env.MONGO_URL).then(() => {
 
   server.use(cors())
 
+  const corsOptions = {
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+  }
+
+  api.use(cors(corsOptions))
+
   server.get("/", (_, res) => res.send("Hello, API!"))
 
   server.use("/users", usersRouter)
