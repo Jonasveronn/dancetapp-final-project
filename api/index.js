@@ -10,7 +10,7 @@ db.connect(process.env.MONGO_URL).then(() => {
 
   const server = express()
 
-  server.use(cors())
+  // server.use(cors())
 
   const corsOptions = {
     origin: "*",
@@ -19,7 +19,7 @@ db.connect(process.env.MONGO_URL).then(() => {
     optionsSuccessStatus: 204,
   }
 
-  api.use(cors(corsOptions))
+  server.use(cors(corsOptions))
 
   server.get("/", (_, res) => res.send("Hello, API!"))
 
