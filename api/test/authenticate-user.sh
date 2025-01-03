@@ -1,1 +1,1 @@
-curl -H 'Content-Type: application/json' -d '{"email": "laura@gimenez.com", "password":"123123123"}' http://localhost:3000/users/auth -v
+curl -H 'Content-Type: application/json' -d '{"email": "jonas@veron.com", "password":"123123123"}' https://dancetapp-final-project.onrender.com//users/auth -v
