@@ -20,8 +20,8 @@ jobs:
           npm run build
       - name: deploy app
         env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
-          NETLIFY_SITE_ID: "${{ secrets.NETLIFY_SITE_ID }}"
+          NETLIFY_AUTH_TOKEN: "nfp_K8vt2AodcbK16g7WhEuf5TaTsxZs7yec91ce"
+          NETLIFY_SITE_ID: "f7ecc224-dcbe-41de-a84e-e6a33dfaba41"
         run: |
           npm install netlify-cli -g
           cd app
