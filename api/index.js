@@ -13,7 +13,7 @@ db.connect(process.env.MONGO_URL).then(() => {
   // server.use(cors())
 
   const corsOptions = {
-    origin: "*",
+    origin: "https://dancetapp.netlify.app",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
     preflightContinue: false,
     optionsSuccessStatus: 204,
