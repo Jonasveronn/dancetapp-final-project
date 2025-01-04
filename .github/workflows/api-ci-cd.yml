@@ -29,6 +29,7 @@ jobs:
           cd api
           npm i
           npm run test
+          npm run start
       - name: deploy api
         run: |
           curl --request POST \
