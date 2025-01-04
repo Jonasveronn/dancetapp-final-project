@@ -5,7 +5,7 @@ const { SystemError } = errors
 export default (image) => {
   validate.image(image)
 
-  return fetch(`http://${import.meta.env.VITE_API_URL}/users/profilePicture`, {
+  return fetch(`${import.meta.env.VITE_API_URL}/users/profilePicture`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${localStorage.token}`,

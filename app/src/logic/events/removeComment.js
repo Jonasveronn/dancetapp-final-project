@@ -7,9 +7,7 @@ export default (eventId, commentId) => {
   validate.id(commentId, "commentId")
 
   return fetch(
-    `http://${
-      import.meta.env.VITE_API_URL
-    }/events/${eventId}/comments/${commentId}`,
+    `${import.meta.env.VITE_API_URL}/events/${eventId}/comments/${commentId}`,
     {
       method: "DELETE",
       headers: {

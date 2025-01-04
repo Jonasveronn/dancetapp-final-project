@@ -9,7 +9,7 @@ export default (images, type, text, date, location) => {
   validate.date(date)
   validate.location(location)
 
-  return fetch(`http://${import.meta.env.VITE_API_URL}/events`, {
+  return fetch(`${import.meta.env.VITE_API_URL}/events`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${localStorage.token}`,

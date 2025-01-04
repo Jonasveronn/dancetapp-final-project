@@ -5,13 +5,10 @@ const { SystemError } = errors
 export default (eventId) => {
   validate.id(eventId, "eventId")
 
-  return fetch(
-    `http://${import.meta.env.VITE_API_URL}/events/${eventId}/likes`,
-    {
-      method: "PATCH",
-      headers: { Authorization: `Bearer ${localStorage.token}` },
-    }
-  )
+  return fetch(`${import.meta.env.VITE_API_URL}/events/${eventId}/likes`, {
+    method: "PATCH",
+    headers: { Authorization: `Bearer ${localStorage.token}` },
+  })
     .catch((error) => {
       throw new SystemError(error.message)
     })

@@ -6,7 +6,7 @@ export default (oldEmail, newEmail, newEmailRepeat) => {
   validate.email(newEmail)
   validate.emailsMatch(newEmail, newEmailRepeat)
 
-  return fetch(`http://${import.meta.env.VITE_API_URL}/users/changeEmail`, {
+  return fetch(`${import.meta.env.VITE_API_URL}/users/changeEmail`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${localStorage.token}`,
