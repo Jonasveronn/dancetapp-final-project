@@ -1,0 +1,38 @@
+name: Deploy App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+
+    services:
+      mongodb:
+        image: mongo:8
+        ports:
+          - 27017:27017
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: install & test
+        env:
+          PORT: 3000
+          MONGO_URL: mongodb+srv://jonasveronn:Jonas1524Veron@dancetapp.sk87z.mongodb.net/?retryWrites=true&w=majority&appName=DanceTapp
+          JWT_SECRET: hola
+        run: |
+          cd api
+          npm i
+          npm run test
+      - name: deploy api
+        run: |
+          curl --request POST \
+              --url https://api.render.com/v1/services/srv-cts1mllumphs73fivpj/deploys \
+              --header 'accept: application/json' \
+              --header 'authorization: Bearer rnd_Uwk3WGLksT0oiRevOyT61K9EH3uJ' \
+              --header 'content-type: application/json'
