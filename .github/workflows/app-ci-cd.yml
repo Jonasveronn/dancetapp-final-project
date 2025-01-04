@@ -9,9 +9,26 @@ jobs:
   deployment:
     runs-on: ubuntu-latest
     steps:
-- uses: actions/checkout@v4
-- uses: actions/setup-node@v4
-  with:
-    node-version: 18
-- run: npm ci
-- run: npm test
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: install / test / build
+        run: |
+          cd app
+          npm install
+          npm run test
+          npm run build
+      - name: deploy app
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_ID }}
+        run: |
+          npm install netlify-cli -g
+          cd app
+          touch netlify.toml
+          echo '[build.environment]' > netlify.toml
+          echo '  VITE_API_URL = "https://dancetapp-final-project.onrender.com"' >> netlify.toml
+          netlify build
+          netlify deploy --dir=./dist --prod
+          rm netlify.toml
